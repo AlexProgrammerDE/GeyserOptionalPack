@@ -118,24 +118,27 @@ def interpolation_scripts():
     for key in channels[:6]:
         pre.append(f"v.{key} = math.lerp(v.from_{key}, q.property('geyser:{key}'), v.blend);")
     for side in ('l', 'r'):
-        # Slerp the two rotations independently, including antipodal and nearly equal inputs.
+        # Match JOML's raw-quaternion slerp, including magnitude and antipodal inputs.
         dot = ' + '.join(f"v.from_{side}{axis} * q.property('geyser:{side}{axis}')" for axis in 'xyzw')
-        pre += [f'v.dot = math.clamp({dot}, -1, 1);',
+        pre += [f'v.dot = {dot};',
                 'v.sign = v.dot < 0 ? -1 : 1;',
-                'v.angle = math.acos(math.abs(v.dot));',
-                'v.denominator = math.sin(v.angle);',
-                'v.a = v.denominator < 0.0001 ? 1 - v.blend : math.sin((1 - v.blend) * v.angle) / v.denominator;',
-                'v.b = v.sign * (v.denominator < 0.0001 ? v.blend : math.sin(v.blend * v.angle) / v.denominator);']
+                'v.absolute_dot = math.abs(v.dot);',
+                'v.denominator = math.sqrt(math.max(0, 1 - v.absolute_dot * v.absolute_dot));',
+                'v.angle = math.atan2(v.denominator, v.absolute_dot);',
+                'v.a = 1 - v.absolute_dot > 0.000001 ? math.sin((1 - v.blend) * v.angle) / v.denominator : 1 - v.blend;',
+                'v.b = v.sign * (1 - v.absolute_dot > 0.000001 ? math.sin(v.blend * v.angle) / v.denominator : v.blend);']
         for axis in 'xyzw':
             pre.append(f"v.{side}{axis} = v.a * v.from_{side}{axis} + v.b * q.property('geyser:{side}{axis}');")
-        pre.append(f"v.length = math.sqrt({' + '.join(f'v.{side}{a} * v.{side}{a}' for a in 'xyzw')});")
+        pre.append(f"v.{side}qs = {' + '.join(f'v.{side}{a} * v.{side}{a}' for a in 'xyzw')};")
+        pre.append(f'v.length = math.sqrt(v.{side}qs);')
+        # Normalize only the Euler conversion. Raw components remain available for interruptions.
         for axis in 'xyzw':
             fallback = 1 if axis == 'w' else 0
-            pre.append(f'v.{side}{axis} = v.length < 0.000001 ? {fallback} : v.{side}{axis} / v.length;')
-        pre += [f'v.r20 = 2 * (v.{side}x * v.{side}z - v.{side}y * v.{side}w);',
+            pre.append(f'v.q{axis} = v.length == 0 ? {fallback} : v.{side}{axis} / v.length;')
+        pre += ['v.r20 = 2 * (v.qx * v.qz - v.qy * v.qw);',
                 f'v.{side}ey = math.asin(math.clamp(-v.r20, -1, 1));',
-                f'v.{side}ex = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.{side}y * v.{side}z + v.{side}x * v.{side}w), 1 - 2 * (v.{side}x * v.{side}x + v.{side}y * v.{side}y)) : 0;',
-                f'v.{side}ez = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.{side}x * v.{side}y + v.{side}z * v.{side}w), 1 - 2 * (v.{side}y * v.{side}y + v.{side}z * v.{side}z)) : math.atan2(-2 * (v.{side}x * v.{side}y - v.{side}z * v.{side}w), 1 - 2 * (v.{side}x * v.{side}x + v.{side}z * v.{side}z));']
+                f'v.{side}ex = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.qy * v.qz + v.qx * v.qw), 1 - 2 * (v.qx * v.qx + v.qy * v.qy)) : 0;',
+                f'v.{side}ez = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.qx * v.qy + v.qz * v.qw), 1 - 2 * (v.qy * v.qy + v.qz * v.qz)) : math.atan2(-2 * (v.qx * v.qy - v.qz * v.qw), 1 - 2 * (v.qx * v.qx + v.qz * v.qz));']
     return initialize, pre
 
 
@@ -162,6 +165,7 @@ def outputs(source, root):
             rotation = [0, 0, 0]
             rotation['xyz'.index(axis)] = f'v.{side[0]}e{component}'
             display['bones'][f'{side}_{axis}'] = {'rotation': rotation}
+        display['bones'][f'{side}_x']['scale'] = [f'v.{side[0]}qs'] * 3
     animations = {'animation.display.transform': display}
     aliases = {'transform': 'animation.display.transform'}
     animate = ['transform']

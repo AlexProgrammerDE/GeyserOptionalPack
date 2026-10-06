@@ -2,6 +2,8 @@ import com.google.gson.JsonParser;
 import org.cloudburstmc.mojava.MoJava;
 import org.cloudburstmc.mojava.compiler.MoScript;
 import org.cloudburstmc.mojava.runtime.MoRuntime;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -50,6 +52,25 @@ public final class InterpolationTest {
         set("lz", Math.sin(Math.toRadians(degrees / 2)));
         set("lw", Math.cos(Math.toRadians(degrees / 2)));
     }
+    private void leftQuaternion(Quaternionf quaternion) {
+        set("lx", quaternion.x); set("ly", quaternion.y); set("lz", quaternion.z); set("lw", quaternion.w);
+    }
+
+    private void rotationBasis(Quaternionf quaternion) {
+        var actual = new Matrix4f().rotationZ((float) Math.toRadians(get("lez")))
+            .rotateY((float) Math.toRadians(get("ley")))
+            .rotateX((float) Math.toRadians(get("lex")))
+            .scale((float) get("lqs"));
+        var expected = new Matrix4f().rotation(quaternion);
+        for (int column = 0; column < 4; column++) {
+            for (int row = 0; row < 4; row++) {
+                if (Math.abs(expected.get(column, row) - actual.get(column, row)) > 1e-4) {
+                    throw new AssertionError("Quaternion basis mismatch at " + column + "," + row);
+                }
+            }
+        }
+    }
+
     private static void near(double expected, double actual) {
         if (!Double.isFinite(actual) || Math.abs(expected - actual) > 1e-5) {
             throw new AssertionError("Expected " + expected + " but got " + actual);
@@ -98,7 +119,37 @@ public final class InterpolationTest {
             for (String key : new String[]{"lx", "ly", "lz", "lw", "rx", "ry", "rz", "rw"}) {
                 if (!Double.isFinite(test.get(key))) throw new AssertionError(key + " is not finite");
             }
-            System.out.println("PASS " + file + ": interpolation, interruption, antipodal rotation, gimbal lock, delay, zero duration and profile selection");
+            // JOML's matrix retains quaternion magnitude instead of normalizing it away.
+            var source = new Quaternionf(1, 2, 3, 4);
+            var target = new Quaternionf(2, -4, 1, 1);
+            test.set("duration", 0); test.set("delay", 0); test.set("revision", 9);
+            test.leftQuaternion(source); test.frame(0); test.rotationBasis(source);
+            test.set("duration", 1); test.set("revision", 10); test.leftQuaternion(target);
+            test.frame(0); test.frame(.5);
+            test.rotationBasis(new Quaternionf(source).slerp(target, .5f));
+            near(13.5, test.get("lqs"));
+            // Zero quaternions collapse the basis, including when reached through interpolation.
+            var identity = new Quaternionf();
+            var zero = new Quaternionf(0, 0, 0, 0);
+            test.set("duration", 0); test.set("revision", 11); test.leftQuaternion(identity); test.frame(0);
+            test.set("duration", 1); test.set("revision", 12); test.leftQuaternion(zero);
+            test.frame(0); test.frame(.5); test.rotationBasis(new Quaternionf(identity).slerp(zero, .5f));
+            near(.5, test.get("lqs"));
+            test.set("duration", 0); test.set("revision", 13); test.frame(0); test.rotationBasis(zero);
+            near(0, test.get("lqs")); near(0, test.get("lex")); near(0, test.get("ley")); near(0, test.get("lez"));
+            // Small non-unit quaternions use angular interpolation with an antipodal target.
+            source = new Quaternionf(.2f, -.3f, .4f, .1f);
+            target = new Quaternionf(-.1f, .25f, -.3f, .2f);
+            test.set("duration", 0); test.set("revision", 14); test.leftQuaternion(source); test.frame(0);
+            test.set("duration", 1); test.set("revision", 15); test.leftQuaternion(target); test.frame(0);
+            test.frame(.25); test.rotationBasis(new Quaternionf(source).slerp(target, .25f));
+            test.frame(.25); test.rotationBasis(new Quaternionf(source).slerp(target, .5f));
+            // An interruption must retain the current raw quaternion, including its magnitude.
+            var intermediate = new Quaternionf(source).slerp(target, .5f);
+            var next = new Quaternionf(.7f, .1f, -.2f, .3f);
+            test.set("revision", 16); test.leftQuaternion(next); test.frame(0); test.frame(.5);
+            test.rotationBasis(intermediate.slerp(next, .5f));
+            System.out.println("PASS " + file + ": interpolation, interruption, antipodal rotation, gimbal lock, delay, zero duration, profile selection and JOML quaternion magnitude");
         }
     }
 }

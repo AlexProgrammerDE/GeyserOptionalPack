@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DEPENDENCIES = [
+    ('joml.jar', 'https://repo.maven.apache.org/maven2/org/joml/joml/1.10.8/joml-1.10.8.jar', 'bf19510145178df82cd3bd37edd514c13f411531ec5545299fd3abcbc98fe7c2'),
     ('mojava.jar', 'https://repo.opencollab.dev/maven-snapshots/org/cloudburstmc/mojava/0.0.1-SNAPSHOT/mojava-0.0.1-20260627.182152-2.jar', '9db3c78a27a401fcc7ef1d5510fae84193b5d3645fa2ff9bf576afcd9968c70f'),
     ('asm.jar', 'https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.7/asm-9.7.jar', 'adf46d5e34940bdf148ecdd26a9ee8eea94496a72034ff7141066b3eea5c4e9d'),
     ('gson.jar', 'https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar', '57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b'),

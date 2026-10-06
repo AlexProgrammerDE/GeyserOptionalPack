@@ -77,8 +77,8 @@ class GeneratorTest(unittest.TestCase):
         geometry = generated[ROOT / 'models/entity/display.geo.json']['minecraft:geometry'][0]
         animation = generated[ROOT / 'animations/display.animation.json']['animations']['animation.display.transform']['bones']
         parents = {bone['name']: bone.get('parent') for bone in geometry['bones']}
-        values = dict(zip(['tx', 'ty', 'tz', 'sx', 'sy', 'sz', 'lex', 'ley', 'lez', 'rex', 'rey', 'rez'],
-                          [1, -2, 3, -2, .5, 3, 21, -44, 76, -33, 63, 14]))
+        values = dict(zip(['tx', 'ty', 'tz', 'sx', 'sy', 'sz', 'lex', 'ley', 'lez', 'rex', 'rey', 'rez', 'lqs', 'rqs'],
+                          [1, -2, 3, -2, .5, 3, 21, -44, 76, -33, 63, 14, 4, 9]))
 
         def channel(value):
             if not isinstance(value, str):
@@ -100,7 +100,7 @@ class GeneratorTest(unittest.TestCase):
                               factor({'rotate_z': rotation[2]}), factor({'rotate_y': rotation[1]}),
                               factor({'rotate_x': rotation[0]}), factor({'scale': sizes})))
         expected = compose(factor({'translate': [1, 2, 3]}), factor({'rotate_z': 76}), factor({'rotate_y': -44}),
-                           factor({'rotate_x': 21}), factor({'scale': [-2, .5, 3]}), factor({'rotate_z': 14}),
+                           factor({'rotate_x': 21}), factor({'scale': [-72, 18, 108]}), factor({'rotate_z': 14}),
                            factor({'rotate_y': 63}), factor({'rotate_x': -33}))
         self.assertMatrix(actual, expected)
 

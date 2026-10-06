@@ -23,6 +23,11 @@
                         "v.lex",
                         0,
                         0
+                    ],
+                    "scale": [
+                        "v.lqs",
+                        "v.lqs",
+                        "v.lqs"
                     ]
                 },
                 "left_y": {
@@ -44,6 +49,11 @@
                         "v.rex",
                         0,
                         0
+                    ],
+                    "scale": [
+                        "v.rqs",
+                        "v.rqs",
+                        "v.rqs"
                     ]
                 },
                 "right_y": {

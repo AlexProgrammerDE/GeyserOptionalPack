@@ -23,7 +23,7 @@ The script tests require Java 17 or later and `curl`:
 python3 tools/display/test_molang.py
 ```
 
-That command downloads checksum-pinned MoJava, ASM and Gson test dependencies into a temporary directory. It executes the generated scripts for both entity types. It checks interrupted interpolation, shortest-path quaternion interpolation, antipodal rotations, delays, zero duration and profile selection. No library is required by the pack at runtime.
+That command downloads checksum-pinned MoJava, JOML, ASM and Gson test dependencies into a temporary directory. It executes the generated scripts for both entity types. It checks interrupted interpolation, shortest-path quaternion interpolation, antipodal rotations, delays, zero duration and profile selection. It compares non-unit and zero-quaternion matrices against JOML, including interrupted interpolation. No library is required by the pack at runtime.
 
 `--require-complete` fails while the manifest lists unresolved renderer paths. The checked-in manifest deliberately fails that gate.
 
@@ -56,15 +56,15 @@ For Java item-display contexts, a profile can supply `context_targets`. Keys are
 | --- | --- |
 | `geyser:tx`, `ty`, `tz` | Translation in block units, already converted into the pack frame |
 | `geyser:sx`, `sy`, `sz` | Independent scale axes, including zero and negative values |
-| `geyser:lx`, `ly`, `lz`, `lw` | Normalized left quaternion in the pack frame |
-| `geyser:rx`, `ry`, `rz`, `rw` | Normalized right quaternion in the pack frame |
+| `geyser:lx`, `ly`, `lz`, `lw` | Raw left quaternion in the pack frame |
+| `geyser:rx`, `ry`, `rz`, `rw` | Raw right quaternion in the pack frame |
 | `geyser:revision` | Bounded revision counter for a batch of transform updates |
 | `geyser:delay` | Interpolation delay in Java ticks |
 | `geyser:duration` | Interpolation duration in seconds |
 | `geyser:display_context` | Java item-display context, 0 through 8 |
 | `geyser:render_profile` | Explicit correction ID, or zero for automatic selection |
 
-The animation keeps `left rotation * scale * right rotation` separate. It interpolates each quaternion along the shortest path, then converts it into its own Z-Y-X bone chain. It snapshots the current pose when a new revision interrupts interpolation. A non-positive duration applies the target when the delay expires.
+The animation keeps `left rotation * scale * right rotation` separate. It interpolates each raw quaternion along the shortest path, then converts its orientation into a Z-Y-X bone chain. It applies the squared quaternion length as uniform scale. This preserves non-unit magnitudes and zero-quaternion collapse, following [JOML quaternion interpolation](https://github.com/JOML-CI/JOML/blob/master/src/main/java/org/joml/Quaternionf.java) and [matrix construction](https://github.com/JOML-CI/JOML/blob/master/src/main/java/org/joml/Matrix4f.java). It snapshots the current pose when a new revision interrupts interpolation. A non-positive duration applies the target when the delay expires.
 
 ## Evidence and limits
 
