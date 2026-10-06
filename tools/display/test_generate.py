@@ -72,6 +72,38 @@ class GeneratorTest(unittest.TestCase):
                 actual = multiply(actual, matrix)
             self.assertMatrix(actual, expected)
 
+    def test_display_hierarchy_keeps_rotations_on_opposite_sides_of_scale(self):
+        generated = outputs(self.source, ROOT)
+        geometry = generated[ROOT / 'models/entity/display.geo.json']['minecraft:geometry'][0]
+        animation = generated[ROOT / 'animations/display.animation.json']['animations']['animation.display.transform']['bones']
+        parents = {bone['name']: bone.get('parent') for bone in geometry['bones']}
+        values = dict(zip(['tx', 'ty', 'tz', 'sx', 'sy', 'sz', 'lex', 'ley', 'lez', 'rex', 'rey', 'rez'],
+                          [1, -2, 3, -2, .5, 3, 21, -44, 76, -33, 63, 14]))
+
+        def channel(value):
+            if not isinstance(value, str):
+                return value
+            parts = value.split(' * ')
+            return values[parts[0].removeprefix('v.')] * (float(parts[1]) if len(parts) == 2 else 1)
+
+        chain, name = [], 'rightitem'
+        while name is not None:
+            chain.append(name)
+            name = parents[name]
+        actual = identity()
+        for name in reversed(chain):
+            pose = animation.get(name, {})
+            position = [channel(v) for v in pose.get('position', [0, 0, 0])]
+            rotation = [channel(v) for v in pose.get('rotation', [0, 0, 0])]
+            sizes = [channel(v) for v in pose.get('scale', [1, 1, 1])]
+            actual = multiply(actual, compose(factor({'translate': [position[0] / 16, -position[1] / 16, position[2] / 16]}),
+                              factor({'rotate_z': rotation[2]}), factor({'rotate_y': rotation[1]}),
+                              factor({'rotate_x': rotation[0]}), factor({'scale': sizes})))
+        expected = compose(factor({'translate': [1, 2, 3]}), factor({'rotate_z': 76}), factor({'rotate_y': -44}),
+                           factor({'rotate_x': 21}), factor({'scale': [-2, .5, 3]}), factor({'rotate_z': 14}),
+                           factor({'rotate_y': 63}), factor({'rotate_x': -33}))
+        self.assertMatrix(actual, expected)
+
     def test_context_overrides_and_explicit_only_profiles_generate_valid_variants(self):
         source = copy.deepcopy(self.source)
         source['profiles'][0]['context_targets'] = {'6': [{'scale': [0, 1, 2]}]}

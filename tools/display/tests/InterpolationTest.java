@@ -86,10 +86,19 @@ public final class InterpolationTest {
             // A zero-duration update with negative delay takes effect immediately.
             test.set("duration", 0); test.set("delay", -1); test.set("revision", 6); test.set("tx", -8);
             test.frame(0); near(-8, test.get("tx"));
+            // Exact gimbal lock must still produce the equivalent matrix basis.
+            test.set("revision", 7);
+            test.set("lx", .5); test.set("ly", .5); test.set("lz", -.5); test.set("lw", .5);
+            test.frame(0);
+            near(0, test.get("lex")); near(90, test.get("ley")); near(-90, test.get("lez"));
+            // Nearly identical rotations use the guarded interpolation branch.
+            test.set("revision", 8); test.set("duration", 1); test.set("lw", .50000001);
+            test.frame(.5);
+            near(1, Math.sqrt(test.get("lx") * test.get("lx") + test.get("ly") * test.get("ly") + test.get("lz") * test.get("lz") + test.get("lw") * test.get("lw")));
             for (String key : new String[]{"lx", "ly", "lz", "lw", "rx", "ry", "rz", "rw"}) {
                 if (!Double.isFinite(test.get(key))) throw new AssertionError(key + " is not finite");
             }
-            System.out.println("PASS " + file + ": interpolation, interruption, antipodal rotation, delay, zero duration and profile selection");
+            System.out.println("PASS " + file + ": interpolation, interruption, antipodal rotation, gimbal lock, delay, zero duration and profile selection");
         }
     }
 }
