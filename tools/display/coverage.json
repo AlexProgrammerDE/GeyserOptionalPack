@@ -42,7 +42,7 @@
             ],
             "evidence": {
                 "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
-                "maximum_matrix_error": 1.139549425932529e-07
+                "maximum_matrix_error": 1.7718355316276302e-07
             }
         },
         {

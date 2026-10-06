@@ -68,6 +68,14 @@ The animation keeps `left rotation * scale * right rotation` separate. It interp
 
 ## Evidence and limits
 
+You can reproduce the native fixtures with a locally supplied Windows binary and PistonDecompiler's native helper dependencies:
+
+```sh
+python3 tools/display/probe_native.py --binary /path/to/program.bin --piston-native /path/to/PistonDecompiler/scripts/native --output /path/to/derived-results
+```
+
+The probe requires the exact binary checksum in the manifest. It executes the renderer and bone routines with explicit synthetic inputs. It exports matrices and error measurements only. Keep the game binary private. Copy the exported fixtures into `tools/display/` and run the tests when updating a calibration.
+
 `native-fixtures.json` records matrices obtained by executing the native renderer instructions. The generator tests compare its factors with those independent fixtures.
 
 `native-bone-verification.json` records a second check: executing the native bone-transform routine for every generated correction factor. The probe supplies position, rotation and scale storage directly, a zero ModelPart offset and an identity initial parent. This checks the bone matrix math. It does not check geometry loading, animation parsing, attachable inheritance or camera rendering.

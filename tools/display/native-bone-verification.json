@@ -1,7 +1,7 @@
 {
     "bedrock_version": "1.26.51.1",
     "binary_sha256": "537c0aee2e79afbdc94b44b28e00f466ae62bc50e2733d953b430db9dbaa9ee7",
-    "method": "Execute native BoneOrientation::updateBoneTransform at 0x141bc3d20 for every generated correction factor. Parent starts at identity, ModelPart offset is zero, rotation-relative flag is false. Supply animation-position components directly in BoneOrientation position storage; the native routine negates Y. Convert the resulting model-pixel translation back to block units. Geometry loading, animation blending and camera rendering are outside this verification.",
+    "method": "Native bone matrix execution with supplied animation-position storage, zero ModelPart offset, identity initial parent and false rotation-relative flag. Geometry loading, animation parsing and rendering are outside this check.",
     "cases": [
         {
             "profile": 1,
