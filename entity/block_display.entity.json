@@ -1,55 +1,177 @@
 {
     "format_version": "1.10.0",
     "minecraft:client_entity": {
-      "description": {
-        "identifier": "geyser:block_display",
-        "min_engine_version": "1.8.0",
-        "materials": {
-          "default": "armor_stand"
-        },
-        "textures": {
-          "default": "textures/entity/armor_stand"
-        },
-        "animations": {
-          "interpolate": "animation.display.interpolate",
-          "stable": "animation.display.stable"
-        },
-        "scripts": {
-          "initialize": [
-            "v.interpolating = 0;",
-            "v.interpolation_finished = 0;",
-            "v.animation_time = 0;",
-            "v.interpolation_state = 0;",
-            "v.state_id = q.property('geyser:state_id');",
-            "v.start_interpolation = q.property('geyser:start_interpolation');",
-            "v.interpolation_duration = q.property('geyser:interpolation_duration');",
-            "v.rotation.x = q.property('geyser:rotation_x');",
-            "v.rotation.y = q.property('geyser:rotation_y');",
-            "v.rotation.z = q.property('geyser:rotation_z');",
-            "v.translation.x = q.property('geyser:translation_x');",
-            "v.translation.y = q.property('geyser:translation_y');",
-            "v.translation.z = q.property('geyser:translation_z');",
-            "v.scale.x = q.property('geyser:scale_x');",
-            "v.scale.y = q.property('geyser:scale_y');",
-            "v.scale.z = q.property('geyser:scale_z');"
-          ],
-          "pre_animation": [
-            "v.interpolating = q.property('geyser:state_id') != v.state_id || !v.interpolation_finished;",
-            "v.state_id = q.property('geyser:state_id');",
-            "(v.interpolating) ? {v.animation_time = v.animation_time + q.delta_time; v.interpolation_state = v.animation_time / v.interpolation_duration; v.interpolating = v.animation_time < v.interpolation_duration;};",
-            "v.interpolation_finished = v.interpolating;",
-            "(v.interpolation_finished) ? {v.animation_time = 0; v.interpolation_finished = 0; v.start_interpolation = q.property('geyser:start_interpolation'); v.interpolation_duration = q.property('geyser:interpolation_duration'); v.rotation.x = q.property('geyser:rotation_x'); v.rotation.y = q.property('geyser:rotation_y'); v.rotation.z = q.property('geyser:rotation_z'); v.translation.x = q.property('geyser:translation_x'); v.translation.y = q.property('geyser:translation_y'); v.translation.z = q.property('geyser:translation_z'); v.scale.x = q.property('geyser:scale_x'); v.scale.y = q.property('geyser:scale_y'); v.scale.z = q.property('geyser:scale_z');};"
-          ],
-          "animate": [
-            {"interpolate": "v.interpolating"},
-            {"stable": "!v.interpolating"}
-          ]
-        },
-        "geometry": {
-          "default": "geometry.display"
-        },
-        "render_controllers": [ "controller.render.display" ],
-        "enable_attachables": true
-      }
+        "description": {
+            "identifier": "geyser:block_display",
+            "min_engine_version": "1.8.0",
+            "materials": {
+                "default": "armor_stand"
+            },
+            "textures": {
+                "default": "textures/entity/armor_stand"
+            },
+            "animations": {
+                "transform": "animation.display.transform",
+                "correction_1": "animation.display.correction.1",
+                "correction_2": "animation.display.correction.2",
+                "correction_3": "animation.display.correction.3",
+                "correction_4": "animation.display.correction.4",
+                "correction_5": "animation.display.correction.5",
+                "correction_6": "animation.display.correction.6",
+                "correction_7": "animation.display.correction.7",
+                "correction_8": "animation.display.correction.8",
+                "correction_9": "animation.display.correction.9",
+                "correction_10": "animation.display.correction.10",
+                "correction_11": "animation.display.correction.11",
+                "correction_12": "animation.display.correction.12",
+                "correction_13": "animation.display.correction.13",
+                "correction_14": "animation.display.correction.14",
+                "correction_15": "animation.display.correction.15",
+                "correction_16": "animation.display.correction.16"
+            },
+            "scripts": {
+                "initialize": [
+                    "v.state = q.property('geyser:revision');",
+                    "v.elapsed = 0;",
+                    "v.blend = 1;",
+                    "v.tx = q.property('geyser:tx');",
+                    "v.from_tx = v.tx;",
+                    "v.ty = q.property('geyser:ty');",
+                    "v.from_ty = v.ty;",
+                    "v.tz = q.property('geyser:tz');",
+                    "v.from_tz = v.tz;",
+                    "v.sx = q.property('geyser:sx');",
+                    "v.from_sx = v.sx;",
+                    "v.sy = q.property('geyser:sy');",
+                    "v.from_sy = v.sy;",
+                    "v.sz = q.property('geyser:sz');",
+                    "v.from_sz = v.sz;",
+                    "v.lx = q.property('geyser:lx');",
+                    "v.from_lx = v.lx;",
+                    "v.ly = q.property('geyser:ly');",
+                    "v.from_ly = v.ly;",
+                    "v.lz = q.property('geyser:lz');",
+                    "v.from_lz = v.lz;",
+                    "v.lw = q.property('geyser:lw');",
+                    "v.from_lw = v.lw;",
+                    "v.rx = q.property('geyser:rx');",
+                    "v.from_rx = v.rx;",
+                    "v.ry = q.property('geyser:ry');",
+                    "v.from_ry = v.ry;",
+                    "v.rz = q.property('geyser:rz');",
+                    "v.from_rz = v.rz;",
+                    "v.rw = q.property('geyser:rw');",
+                    "v.from_rw = v.rw;"
+                ],
+                "pre_animation": [
+                    "q.property('geyser:revision') != v.state ? { v.from_tx = v.tx; v.from_ty = v.ty; v.from_tz = v.tz; v.from_sx = v.sx; v.from_sy = v.sy; v.from_sz = v.sz; v.from_lx = v.lx; v.from_ly = v.ly; v.from_lz = v.lz; v.from_lw = v.lw; v.from_rx = v.rx; v.from_ry = v.ry; v.from_rz = v.rz; v.from_rw = v.rw; v.elapsed = -q.property('geyser:delay') / 20; v.state = q.property('geyser:revision'); };",
+                    "v.elapsed = v.elapsed + q.delta_time;",
+                    "v.blend = v.elapsed < 0 ? 0 : (q.property('geyser:duration') <= 0 ? 1 : math.clamp(v.elapsed / q.property('geyser:duration'), 0, 1));",
+                    "v.tx = math.lerp(v.from_tx, q.property('geyser:tx'), v.blend);",
+                    "v.ty = math.lerp(v.from_ty, q.property('geyser:ty'), v.blend);",
+                    "v.tz = math.lerp(v.from_tz, q.property('geyser:tz'), v.blend);",
+                    "v.sx = math.lerp(v.from_sx, q.property('geyser:sx'), v.blend);",
+                    "v.sy = math.lerp(v.from_sy, q.property('geyser:sy'), v.blend);",
+                    "v.sz = math.lerp(v.from_sz, q.property('geyser:sz'), v.blend);",
+                    "v.dot = math.clamp(v.from_lx * q.property('geyser:lx') + v.from_ly * q.property('geyser:ly') + v.from_lz * q.property('geyser:lz') + v.from_lw * q.property('geyser:lw'), -1, 1);",
+                    "v.sign = v.dot < 0 ? -1 : 1;",
+                    "v.angle = math.acos(math.abs(v.dot));",
+                    "v.denominator = math.sin(v.angle);",
+                    "v.a = v.denominator < 0.0001 ? 1 - v.blend : math.sin((1 - v.blend) * v.angle) / v.denominator;",
+                    "v.b = v.sign * (v.denominator < 0.0001 ? v.blend : math.sin(v.blend * v.angle) / v.denominator);",
+                    "v.lx = v.a * v.from_lx + v.b * q.property('geyser:lx');",
+                    "v.ly = v.a * v.from_ly + v.b * q.property('geyser:ly');",
+                    "v.lz = v.a * v.from_lz + v.b * q.property('geyser:lz');",
+                    "v.lw = v.a * v.from_lw + v.b * q.property('geyser:lw');",
+                    "v.length = math.sqrt(v.lx * v.lx + v.ly * v.ly + v.lz * v.lz + v.lw * v.lw);",
+                    "v.lx = v.length < 0.000001 ? 0 : v.lx / v.length;",
+                    "v.ly = v.length < 0.000001 ? 0 : v.ly / v.length;",
+                    "v.lz = v.length < 0.000001 ? 0 : v.lz / v.length;",
+                    "v.lw = v.length < 0.000001 ? 1 : v.lw / v.length;",
+                    "v.r20 = 2 * (v.lx * v.lz - v.ly * v.lw);",
+                    "v.ley = math.asin(math.clamp(-v.r20, -1, 1));",
+                    "v.lex = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.ly * v.lz + v.lx * v.lw), 1 - 2 * (v.lx * v.lx + v.ly * v.ly)) : 0;",
+                    "v.lez = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.lx * v.ly + v.lz * v.lw), 1 - 2 * (v.ly * v.ly + v.lz * v.lz)) : math.atan2(-2 * (v.lx * v.ly - v.lz * v.lw), 1 - 2 * (v.lx * v.lx + v.lz * v.lz));",
+                    "v.dot = math.clamp(v.from_rx * q.property('geyser:rx') + v.from_ry * q.property('geyser:ry') + v.from_rz * q.property('geyser:rz') + v.from_rw * q.property('geyser:rw'), -1, 1);",
+                    "v.sign = v.dot < 0 ? -1 : 1;",
+                    "v.angle = math.acos(math.abs(v.dot));",
+                    "v.denominator = math.sin(v.angle);",
+                    "v.a = v.denominator < 0.0001 ? 1 - v.blend : math.sin((1 - v.blend) * v.angle) / v.denominator;",
+                    "v.b = v.sign * (v.denominator < 0.0001 ? v.blend : math.sin(v.blend * v.angle) / v.denominator);",
+                    "v.rx = v.a * v.from_rx + v.b * q.property('geyser:rx');",
+                    "v.ry = v.a * v.from_ry + v.b * q.property('geyser:ry');",
+                    "v.rz = v.a * v.from_rz + v.b * q.property('geyser:rz');",
+                    "v.rw = v.a * v.from_rw + v.b * q.property('geyser:rw');",
+                    "v.length = math.sqrt(v.rx * v.rx + v.ry * v.ry + v.rz * v.rz + v.rw * v.rw);",
+                    "v.rx = v.length < 0.000001 ? 0 : v.rx / v.length;",
+                    "v.ry = v.length < 0.000001 ? 0 : v.ry / v.length;",
+                    "v.rz = v.length < 0.000001 ? 0 : v.rz / v.length;",
+                    "v.rw = v.length < 0.000001 ? 1 : v.rw / v.length;",
+                    "v.r20 = 2 * (v.rx * v.rz - v.ry * v.rw);",
+                    "v.rey = math.asin(math.clamp(-v.r20, -1, 1));",
+                    "v.rex = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.ry * v.rz + v.rx * v.rw), 1 - 2 * (v.rx * v.rx + v.ry * v.ry)) : 0;",
+                    "v.rez = math.abs(v.r20) < 0.9999999 ? math.atan2(2 * (v.rx * v.ry + v.rz * v.rw), 1 - 2 * (v.ry * v.ry + v.rz * v.rz)) : math.atan2(-2 * (v.rx * v.ry - v.rz * v.rw), 1 - 2 * (v.rx * v.rx + v.rz * v.rz));",
+                    "v.render_profile = q.property('geyser:render_profile') > 0 ? q.property('geyser:render_profile') : (q.equipped_item_is_attachable('main_hand') ? 0 : (q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:apple', 'minecraft:coal', 'minecraft:diamond', 'minecraft:emerald', 'minecraft:gold_ingot', 'minecraft:iron_ingot', 'minecraft:paper') ? 1 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:cobblestone', 'minecraft:dirt', 'minecraft:glass', 'minecraft:stone') ? 2 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:oak_stairs', 'minecraft:stone_stairs') ? 4 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:chest', 'minecraft:trapped_chest') ? 5 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:end_rod') ? 6 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:creeper_head', 'minecraft:dragon_head', 'minecraft:piglin_head', 'minecraft:player_head', 'minecraft:skeleton_skull', 'minecraft:wither_skeleton_skull', 'minecraft:zombie_head') ? 7 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:conduit') ? 8 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:lightning_rod') ? 9 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:pumpkin') ? 10 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:carved_pumpkin') ? 11 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:lit_pumpkin') ? 12 : q.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:snow_layer') ? 16 : 0));"
+                ],
+                "animate": [
+                    "transform",
+                    {
+                        "correction_1": "v.render_profile == 1"
+                    },
+                    {
+                        "correction_2": "v.render_profile == 2"
+                    },
+                    {
+                        "correction_3": "v.render_profile == 3"
+                    },
+                    {
+                        "correction_4": "v.render_profile == 4"
+                    },
+                    {
+                        "correction_5": "v.render_profile == 5"
+                    },
+                    {
+                        "correction_6": "v.render_profile == 6"
+                    },
+                    {
+                        "correction_7": "v.render_profile == 7"
+                    },
+                    {
+                        "correction_8": "v.render_profile == 8"
+                    },
+                    {
+                        "correction_9": "v.render_profile == 9"
+                    },
+                    {
+                        "correction_10": "v.render_profile == 10"
+                    },
+                    {
+                        "correction_11": "v.render_profile == 11"
+                    },
+                    {
+                        "correction_12": "v.render_profile == 12"
+                    },
+                    {
+                        "correction_13": "v.render_profile == 13"
+                    },
+                    {
+                        "correction_14": "v.render_profile == 14"
+                    },
+                    {
+                        "correction_15": "v.render_profile == 15"
+                    },
+                    {
+                        "correction_16": "v.render_profile == 16"
+                    }
+                ]
+            },
+            "geometry": {
+                "default": "geometry.display"
+            },
+            "render_controllers": [
+                "controller.render.display"
+            ],
+            "enable_attachables": true
+        }
     }
 }

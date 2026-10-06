@@ -1,0 +1,644 @@
+{
+    "bedrock_version": "1.26.51.1",
+    "profiles": [
+        {
+            "id": 1,
+            "name": "ordinary_sprite_head_equivalent",
+            "items": [
+                "minecraft:apple",
+                "minecraft:coal",
+                "minecraft:diamond",
+                "minecraft:emerald",
+                "minecraft:gold_ingot",
+                "minecraft:iron_ingot",
+                "minecraft:paper"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    1.578740796817912,
+                    0.42021912535411654,
+                    0.3298047315111531,
+                    -0.11187169785115322
+                ],
+                [
+                    -0.4216976954763083,
+                    0.3487460692238732,
+                    1.5742696753125385,
+                    0.006878705977971106
+                ],
+                [
+                    0.3279120733832366,
+                    -1.574664994106777,
+                    0.4366710503823078,
+                    0.1809029854094419
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 1.139549425932529e-07
+            }
+        },
+        {
+            "id": 2,
+            "name": "block_shape_0",
+            "items": [
+                "minecraft:cobblestone",
+                "minecraft:dirt",
+                "minecraft:glass",
+                "minecraft:stone"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -1.8856180831641272,
+                    0.6449193670612672,
+                    -1.771901398369799,
+                    -0.6746415683145498
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.1848295242882303
+                ],
+                [
+                    -1.8856180831641265,
+                    -0.6449193670612674,
+                    1.7719013983697998,
+                    0.6746415683145501
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 3,
+            "name": "button_flag_block_path",
+            "items": [
+                "minecraft:oak_button",
+                "minecraft:polished_blackstone_button",
+                "minecraft:stone_button"
+            ],
+            "automatic": false,
+            "correction_matrix": [
+                [
+                    -1.8856180831641272,
+                    0.6449193670612672,
+                    -1.771901398369799,
+                    -0.6746415683145498
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    1.1848295242882303
+                ],
+                [
+                    -1.8856180831641265,
+                    -0.6449193670612674,
+                    1.7719013983697998,
+                    1.12464156831455
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 4,
+            "name": "block_shape_10",
+            "items": [
+                "minecraft:oak_stairs",
+                "minecraft:stone_stairs"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    1.8856180831641263,
+                    0.6449193670612674,
+                    -1.7719013983698,
+                    -0.6746415683145501
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.1848295242882303
+                ],
+                [
+                    -1.8856180831641274,
+                    0.6449193670612671,
+                    -1.7719013983697989,
+                    -0.6746415683145497
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 5,
+            "name": "block_shape_22",
+            "items": [
+                "minecraft:chest",
+                "minecraft:trapped_chest"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    1.885618083164127,
+                    -0.6449193670612672,
+                    1.7719013983697993,
+                    0.6746415683145499
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.1848295242882303
+                ],
+                [
+                    1.8856180831641267,
+                    0.6449193670612673,
+                    -1.7719013983697995,
+                    -0.6746415683145499
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 4.761595778779437e-08
+            }
+        },
+        {
+            "id": 6,
+            "name": "block_shape_81",
+            "items": [
+                "minecraft:end_rod"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -2.2996598285221186,
+                    -0.5554475728010402,
+                    -1.2305095603294447,
+                    -0.28038781770275645
+                ],
+                [
+                    -0.21189149679718788,
+                    -2.251902151154749,
+                    1.4124977190497592,
+                    0.8636371905445652
+                ],
+                [
+                    -1.3333333333333333,
+                    1.3158745406022407,
+                    1.8978428614424787,
+                    0.34634941783785445
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.044769875115705e-08
+            }
+        },
+        {
+            "id": 7,
+            "name": "block_shape_83",
+            "items": [
+                "minecraft:creeper_head",
+                "minecraft:dragon_head",
+                "minecraft:piglin_head",
+                "minecraft:player_head",
+                "minecraft:skeleton_skull",
+                "minecraft:wither_skeleton_skull",
+                "minecraft:zombie_head"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -1.8856180831641267,
+                    -0.6449193670612673,
+                    1.7719013983697995,
+                    0.9246415683145499
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.6848295242882303
+                ],
+                [
+                    1.885618083164127,
+                    -0.6449193670612672,
+                    1.7719013983697993,
+                    1.42464156831455
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 8,
+            "name": "block_shape_101",
+            "items": [
+                "minecraft:conduit"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -1.8856180831641267,
+                    -0.6449193670612673,
+                    1.7719013983697995,
+                    0.9246415683145499
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.5348295242882303
+                ],
+                [
+                    1.885618083164127,
+                    -0.6449193670612672,
+                    1.7719013983697993,
+                    1.42464156831455
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 9,
+            "name": "block_shape_127",
+            "items": [
+                "minecraft:lightning_rod"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -2.2996598285221186,
+                    -0.5554475728010402,
+                    -1.2305095603294447,
+                    -0.28038781770275645
+                ],
+                [
+                    -0.21189149679718788,
+                    -2.251902151154749,
+                    1.4124977190497592,
+                    0.8636371905445652
+                ],
+                [
+                    -1.3333333333333333,
+                    1.3158745406022407,
+                    1.8978428614424787,
+                    0.34634941783785445
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.044769875115705e-08
+            }
+        },
+        {
+            "id": 10,
+            "name": "pumpkin",
+            "items": [
+                "minecraft:pumpkin"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -1.8856180831641267,
+                    -0.6449193670612673,
+                    1.7719013983697995,
+                    0.6746415683145499
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.1848295242882303
+                ],
+                [
+                    1.885618083164127,
+                    -0.6449193670612672,
+                    1.7719013983697993,
+                    0.6746415683145499
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 11,
+            "name": "carved_pumpkin",
+            "items": [
+                "minecraft:carved_pumpkin"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    1.8856180831641263,
+                    0.6449193670612674,
+                    -1.7719013983698,
+                    -0.6746415683145501
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.1848295242882303
+                ],
+                [
+                    -1.8856180831641274,
+                    0.6449193670612671,
+                    -1.7719013983697989,
+                    -0.6746415683145497
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 12,
+            "name": "lit_pumpkin",
+            "items": [
+                "minecraft:lit_pumpkin"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -1.8856180831641267,
+                    -0.6449193670612673,
+                    1.7719013983697995,
+                    0.6746415683145499
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.1848295242882303
+                ],
+                [
+                    1.885618083164127,
+                    -0.6449193670612672,
+                    1.7719013983697993,
+                    0.6746415683145499
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 13,
+            "name": "small_amethyst_bud",
+            "items": [
+                "minecraft:small_amethyst_bud"
+            ],
+            "automatic": false,
+            "correction_matrix": [
+                [
+                    -1.8856180831641272,
+                    0.6449193670612672,
+                    -1.771901398369799,
+                    2.82535843168545
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    3.1848295242882303
+                ],
+                [
+                    -1.8856180831641265,
+                    -0.6449193670612674,
+                    1.7719013983697998,
+                    4.67464156831455
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 1.2563212337113328e-07
+            }
+        },
+        {
+            "id": 14,
+            "name": "medium_amethyst_bud",
+            "items": [
+                "minecraft:medium_amethyst_bud"
+            ],
+            "automatic": false,
+            "correction_matrix": [
+                [
+                    -1.8856180831641272,
+                    0.6449193670612672,
+                    -1.771901398369799,
+                    1.32535843168545
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.9848295242882303
+                ],
+                [
+                    -1.8856180831641265,
+                    -0.6449193670612674,
+                    1.7719013983697998,
+                    3.67464156831455
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 5.154069859791832e-08
+            }
+        },
+        {
+            "id": 15,
+            "name": "large_amethyst_bud",
+            "items": [
+                "minecraft:large_amethyst_bud"
+            ],
+            "automatic": false,
+            "correction_matrix": [
+                [
+                    -1.8856180831641272,
+                    0.6449193670612672,
+                    -1.771901398369799,
+                    1.32535843168545
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    0.9848295242882303
+                ],
+                [
+                    -1.8856180831641265,
+                    -0.6449193670612674,
+                    1.7719013983697998,
+                    3.67464156831455
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 5.154069859791832e-08
+            }
+        },
+        {
+            "id": 16,
+            "name": "snow_layer",
+            "items": [
+                "minecraft:snow_layer"
+            ],
+            "automatic": true,
+            "correction_matrix": [
+                [
+                    -1.8856180831641272,
+                    0.6449193670612672,
+                    -1.771901398369799,
+                    -0.5738729172112268
+                ],
+                [
+                    0.0,
+                    -2.505846988762422,
+                    -0.9120537155351164,
+                    -0.20670906770589817
+                ],
+                [
+                    -1.8856180831641265,
+                    -0.6449193670612674,
+                    1.7719013983697998,
+                    0.573872917211227
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        }
+    ],
+    "unsupported": {
+        "hand_equipped": "Requires the active item-definition flag and alternate wrapper",
+        "maps": "Dedicated map geometry and rendering path",
+        "shield/trident/spyglass": "Dedicated or attachable geometry and transforms",
+        "custom_attachables": "Provide authored renderer factors and select an explicit profile",
+        "buttons/amethyst_buds": "Block-path factors measured; live item renderer classification unverified",
+        "item_display_contexts": "Java model transform contexts need versioned Java model data",
+        "billboards": "Camera-relative basis not implemented",
+        "unlisted_items": "No renderer classification supplied; no automatic correction"
+    },
+    "unknown_item_behavior": "No correction. Native item rendering remains visible.",
+    "in_game_verified": false
+}

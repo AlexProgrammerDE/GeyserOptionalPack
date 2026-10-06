@@ -1,0 +1,790 @@
+{
+    "bedrock_version": "1.26.51.1",
+    "binary_sha256": "537c0aee2e79afbdc94b44b28e00f466ae62bc50e2733d953b430db9dbaa9ee7",
+    "profiles": [
+        {
+            "id": 1,
+            "name": "ordinary_sprite_head_equivalent",
+            "items": [
+                "minecraft:apple",
+                "minecraft:paper",
+                "minecraft:diamond",
+                "minecraft:emerald",
+                "minecraft:coal",
+                "minecraft:iron_ingot",
+                "minecraft:gold_ingot"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0.3125,
+                        0.1875,
+                        -0.1875
+                    ]
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_z": 60
+                },
+                {
+                    "rotate_x": -90
+                },
+                {
+                    "rotate_z": 20
+                },
+                {
+                    "scale": [
+                        1.5,
+                        1.5,
+                        1.5
+                    ]
+                },
+                {
+                    "rotate_y": 50
+                },
+                {
+                    "rotate_z": 335
+                },
+                {
+                    "translate": [
+                        0.075,
+                        -0.245,
+                        -0.1
+                    ]
+                },
+                {
+                    "scale": [
+                        0.0625,
+                        0.0625,
+                        0.0625
+                    ]
+                },
+                {
+                    "rotate_z": 90
+                },
+                {
+                    "rotate_x": -90
+                },
+                {
+                    "rotate_y": -90
+                },
+                {
+                    "translate": [
+                        0,
+                        0,
+                        -16
+                    ]
+                },
+                {
+                    "scale": [
+                        16,
+                        16,
+                        16
+                    ]
+                }
+            ],
+            "target": [
+                {
+                    "translate": [
+                        0,
+                        -0.125,
+                        0
+                    ]
+                },
+                {
+                    "rotate_x": 180
+                },
+                {
+                    "rotate_y": 180
+                },
+                {
+                    "scale": [
+                        0.625,
+                        0.625,
+                        0.625
+                    ]
+                },
+                {
+                    "rotate_y": 180
+                },
+                {
+                    "scale": [
+                        1.5,
+                        1.5,
+                        1.5
+                    ]
+                },
+                {
+                    "scale": [
+                        0.0625,
+                        0.0625,
+                        0.0625
+                    ]
+                },
+                {
+                    "translate": [
+                        8,
+                        16,
+                        0
+                    ]
+                },
+                {
+                    "rotate_z": 90
+                },
+                {
+                    "rotate_x": -90
+                },
+                {
+                    "rotate_y": -90
+                },
+                {
+                    "scale": [
+                        16,
+                        16,
+                        16
+                    ]
+                }
+            ],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 1.139549425932529e-07
+            }
+        },
+        {
+            "id": 2,
+            "name": "block_shape_0",
+            "items": [
+                "minecraft:stone",
+                "minecraft:dirt",
+                "minecraft:glass",
+                "minecraft:cobblestone"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 3,
+            "name": "button_flag_block_path",
+            "items": [
+                "minecraft:stone_button",
+                "minecraft:polished_blackstone_button",
+                "minecraft:oak_button"
+            ],
+            "automatic": false,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "translate": [
+                        0,
+                        -1,
+                        -0.45
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 4,
+            "name": "block_shape_10",
+            "items": [
+                "minecraft:oak_stairs",
+                "minecraft:stone_stairs"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_y": 180
+                },
+                {
+                    "rotate_y": -90
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 5,
+            "name": "block_shape_22",
+            "items": [
+                "minecraft:chest",
+                "minecraft:trapped_chest"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_y": -180
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 4.761595778779437e-08
+            }
+        },
+        {
+            "id": 6,
+            "name": "block_shape_81",
+            "items": [
+                "minecraft:end_rod"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_x": 45
+                },
+                {
+                    "rotate_z": 30
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.044769875115705e-08
+            }
+        },
+        {
+            "id": 7,
+            "name": "block_shape_83",
+            "items": [
+                "minecraft:skeleton_skull",
+                "minecraft:wither_skeleton_skull",
+                "minecraft:zombie_head",
+                "minecraft:creeper_head",
+                "minecraft:dragon_head",
+                "minecraft:piglin_head",
+                "minecraft:player_head"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_y": -90
+                },
+                {
+                    "translate": [
+                        -0.25,
+                        -0.5,
+                        -0.75
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 8,
+            "name": "block_shape_101",
+            "items": [
+                "minecraft:conduit"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_y": -90
+                },
+                {
+                    "translate": [
+                        -0.25,
+                        -0.35,
+                        -0.75
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 9,
+            "name": "block_shape_127",
+            "items": [
+                "minecraft:lightning_rod"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_x": 45
+                },
+                {
+                    "rotate_z": 30
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.044769875115705e-08
+            }
+        },
+        {
+            "id": 10,
+            "name": "pumpkin",
+            "items": [
+                "minecraft:pumpkin"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_y": -90
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 11,
+            "name": "carved_pumpkin",
+            "items": [
+                "minecraft:carved_pumpkin"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_y": 180
+                },
+                {
+                    "rotate_y": -90
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        },
+        {
+            "id": 12,
+            "name": "lit_pumpkin",
+            "items": [
+                "minecraft:lit_pumpkin"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "rotate_y": -90
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 3.764440262288282e-08
+            }
+        },
+        {
+            "id": 13,
+            "name": "small_amethyst_bud",
+            "items": [
+                "minecraft:small_amethyst_bud"
+            ],
+            "automatic": false,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "translate": [
+                        -3.5,
+                        -3,
+                        -4
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 1.2563212337113328e-07
+            }
+        },
+        {
+            "id": 14,
+            "name": "medium_amethyst_bud",
+            "items": [
+                "minecraft:medium_amethyst_bud"
+            ],
+            "automatic": false,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "translate": [
+                        -2,
+                        -0.8,
+                        -3
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 5.154069859791832e-08
+            }
+        },
+        {
+            "id": 15,
+            "name": "large_amethyst_bud",
+            "items": [
+                "minecraft:large_amethyst_bud"
+            ],
+            "automatic": false,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.1875,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                },
+                {
+                    "translate": [
+                        -2,
+                        -0.8,
+                        -3
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 5.154069859791832e-08
+            }
+        },
+        {
+            "id": 16,
+            "name": "snow_layer",
+            "items": [
+                "minecraft:snow_layer"
+            ],
+            "automatic": true,
+            "renderer": [
+                {
+                    "translate": [
+                        0,
+                        0.03125,
+                        -0.3125
+                    ]
+                },
+                {
+                    "rotate_x": 200
+                },
+                {
+                    "rotate_y": 225
+                },
+                {
+                    "scale": [
+                        0.375,
+                        0.375,
+                        0.375
+                    ]
+                }
+            ],
+            "target": [],
+            "evidence": {
+                "method": "Native instruction emulation with identity parent matrix, vanilla transform branch and renderer scale 1",
+                "maximum_matrix_error": 2.274324140127959e-08
+            }
+        }
+    ],
+    "unsupported": {
+        "hand_equipped": "Requires the active item-definition flag and alternate wrapper",
+        "maps": "Dedicated map geometry and rendering path",
+        "shield/trident/spyglass": "Dedicated or attachable geometry and transforms",
+        "custom_attachables": "Provide authored renderer factors and select an explicit profile",
+        "buttons/amethyst_buds": "Block-path factors measured; live item renderer classification unverified",
+        "item_display_contexts": "Java model transform contexts need versioned Java model data",
+        "billboards": "Camera-relative basis not implemented",
+        "unlisted_items": "No renderer classification supplied; no automatic correction"
+    }
+}

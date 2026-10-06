@@ -1,0 +1,21 @@
+name: Display generator
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: python3 tools/display/generate.py --check
+      - run: python3 -m unittest discover -s tools/display -v
+      - run: python3 tools/display/test_molang.py

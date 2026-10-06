@@ -1,0 +1,72 @@
+{
+    "bedrock_version": "1.26.51.1",
+    "binary_sha256": "537c0aee2e79afbdc94b44b28e00f466ae62bc50e2733d953b430db9dbaa9ee7",
+    "method": "Execute native BoneOrientation::updateBoneTransform at 0x141bc3d20 for every generated correction factor. Parent starts at identity, ModelPart offset is zero, rotation-relative flag is false. Supply animation-position components directly in BoneOrientation position storage; the native routine negates Y. Convert the resulting model-pixel translation back to block units. Geometry loading, animation blending and camera rendering are outside this verification.",
+    "cases": [
+        {
+            "profile": 1,
+            "maximum_matrix_error": 1.3921395671800951e-06
+        },
+        {
+            "profile": 2,
+            "maximum_matrix_error": 3.8690281911613056e-07
+        },
+        {
+            "profile": 3,
+            "maximum_matrix_error": 3.8690281911613056e-07
+        },
+        {
+            "profile": 4,
+            "maximum_matrix_error": 7.077902859364826e-07
+        },
+        {
+            "profile": 5,
+            "maximum_matrix_error": 3.8690281933817516e-07
+        },
+        {
+            "profile": 6,
+            "maximum_matrix_error": 5.245678349474758e-07
+        },
+        {
+            "profile": 7,
+            "maximum_matrix_error": 7.077902863805718e-07
+        },
+        {
+            "profile": 8,
+            "maximum_matrix_error": 7.077902863805718e-07
+        },
+        {
+            "profile": 9,
+            "maximum_matrix_error": 5.245678349474758e-07
+        },
+        {
+            "profile": 10,
+            "maximum_matrix_error": 7.077902863805718e-07
+        },
+        {
+            "profile": 11,
+            "maximum_matrix_error": 7.077902859364826e-07
+        },
+        {
+            "profile": 12,
+            "maximum_matrix_error": 7.077902863805718e-07
+        },
+        {
+            "profile": 13,
+            "maximum_matrix_error": 3.8690281911613056e-07
+        },
+        {
+            "profile": 14,
+            "maximum_matrix_error": 3.8690281911613056e-07
+        },
+        {
+            "profile": 15,
+            "maximum_matrix_error": 3.8690281911613056e-07
+        },
+        {
+            "profile": 16,
+            "maximum_matrix_error": 3.8690281911613056e-07
+        }
+    ],
+    "in_game_verified": false
+}

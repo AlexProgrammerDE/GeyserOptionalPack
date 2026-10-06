@@ -1,46 +1,353 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.display",
-				"texture_width": 64,
-				"texture_height": 64,
-				"visible_bounds_width": 2,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
-			},
-			"bones": [
+    "format_version": "1.12.0",
+    "minecraft:geometry": [
+        {
+            "description": {
+                "identifier": "geometry.display",
+                "texture_width": 64,
+                "texture_height": 64,
+                "visible_bounds_width": 2,
+                "visible_bounds_height": 3.5,
+                "visible_bounds_offset": [
+                    0,
+                    1.25,
+                    0
+                ]
+            },
+            "bones": [
                 {
-					"name": "geyser",
-					"pivot": [0, 8, 0]
-				},
-				{
-					"name": "geyser_x",
+                    "name": "geyser",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "left_z",
                     "parent": "geyser",
-					"pivot": [0, 8, 0]
-				},
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
                 {
-					"name": "geyser_y",
-                    "parent": "geyser_x",
-					"pivot": [0, 8, 0]
-				},
+                    "name": "left_y",
+                    "parent": "left_z",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
                 {
-					"name": "geyser_z",
-                    "parent": "geyser_y",
-					"pivot": [0, 8, 0]
-				},
-				{
-					"name": "rightarm",
-                    "parent": "geyser_z",
-					"pivot": [0, 8, 0]
-				},
-				{
-					"name": "rightitem",
-					"parent": "rightarm",
-					"pivot": [0, 8, 0]
-				}
-			]
-		}
-	]
+                    "name": "left_x",
+                    "parent": "left_y",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "display_scale",
+                    "parent": "left_x",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "right_z",
+                    "parent": "display_scale",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "right_y",
+                    "parent": "right_z",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "right_x",
+                    "parent": "right_y",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_0",
+                    "parent": "right_x",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_1",
+                    "parent": "correction_0",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_2",
+                    "parent": "correction_1",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_3",
+                    "parent": "correction_2",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_4",
+                    "parent": "correction_3",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_5",
+                    "parent": "correction_4",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_6",
+                    "parent": "correction_5",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_7",
+                    "parent": "correction_6",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_8",
+                    "parent": "correction_7",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_9",
+                    "parent": "correction_8",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_10",
+                    "parent": "correction_9",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_11",
+                    "parent": "correction_10",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_12",
+                    "parent": "correction_11",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_13",
+                    "parent": "correction_12",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_14",
+                    "parent": "correction_13",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_15",
+                    "parent": "correction_14",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_16",
+                    "parent": "correction_15",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_17",
+                    "parent": "correction_16",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_18",
+                    "parent": "correction_17",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_19",
+                    "parent": "correction_18",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_20",
+                    "parent": "correction_19",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_21",
+                    "parent": "correction_20",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_22",
+                    "parent": "correction_21",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_23",
+                    "parent": "correction_22",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_24",
+                    "parent": "correction_23",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_25",
+                    "parent": "correction_24",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "correction_26",
+                    "parent": "correction_25",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "rightarm",
+                    "parent": "correction_26",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "name": "rightitem",
+                    "parent": "rightarm",
+                    "pivot": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        }
+    ]
 }
