@@ -2,8 +2,11 @@ import copy
 import json
 import math
 import unittest
+import tempfile
+import zipfile
+from pathlib import Path
 
-from generate import DEFAULT_SOURCE, ROOT, bone_channels, compile_profiles, correction, factor, outputs
+from generate import DEFAULT_SOURCE, ROOT, build_pack, bone_channels, compile_profiles, correction, factor, outputs
 from matrices import compose, identity, multiply
 
 
@@ -84,6 +87,19 @@ class GeneratorTest(unittest.TestCase):
                               factor({'rotate_x': rotation[0]}), factor({'scale': bone['scale']})))
         renderer = compose(*(factor(op) for op in source['profiles'][0]['renderer']))
         self.assertMatrix(multiply(actual, renderer), factor({'scale': [0, 1, 2]}))
+
+    def test_pack_build_is_deterministic_and_coexists_with_integrated_resources(self):
+        with tempfile.TemporaryDirectory() as directory:
+            first, second = Path(directory) / 'first.mcpack', Path(directory) / 'second.mcpack'
+            build_pack(ROOT, first)
+            build_pack(ROOT, second)
+            self.assertEqual(first.read_bytes(), second.read_bytes())
+            with zipfile.ZipFile(first) as archive:
+                manifest = json.loads(archive.read('manifest.json'))
+                self.assertNotEqual(manifest['header']['uuid'], json.loads((ROOT / 'manifest.json').read_text())['header']['uuid'])
+                self.assertEqual(7, len(archive.namelist()))
+                for name in ['animations/display.animation.json', 'entity/item_display.entity.json', 'entity/block_display.entity.json']:
+                    self.assertEqual((ROOT / name).read_bytes(), archive.read(name))
 
     def test_checked_in_assets_are_deterministic_and_current(self):
         for path, content in outputs(self.source, ROOT).items():

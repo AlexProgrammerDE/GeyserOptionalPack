@@ -15,3 +15,4 @@ textures/geyser/entity/illager/illusioner.png
 # Display generator test artifacts
 __pycache__/
 *.class
+GeyserDisplayEntities.mcpack

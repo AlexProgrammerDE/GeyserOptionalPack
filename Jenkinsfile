@@ -8,12 +8,13 @@ pipeline {
             steps {
                 sh 'python3 tools/display/generate.py --check'
                 sh 'python3 -m unittest discover -s tools/display -v'
+                sh 'python3 tools/display/generate.py --pack GeyserDisplayEntities.mcpack'
                 sh 'bash prepare_pack.sh'
-                sh 'zip GeyserOptionalPack.mcpack -r . -x ".*" Jenkinsfile required_files.txt prepare_pack.sh "tools/*"'
+                sh 'zip GeyserOptionalPack.mcpack -r . -x ".*" Jenkinsfile required_files.txt prepare_pack.sh "tools/*" GeyserDisplayEntities.mcpack'
             }
             post {
                 success {
-                    archiveArtifacts artifacts: 'GeyserOptionalPack.mcpack'
+                    archiveArtifacts artifacts: 'GeyserOptionalPack.mcpack,GeyserDisplayEntities.mcpack'
                 }
             }
         }

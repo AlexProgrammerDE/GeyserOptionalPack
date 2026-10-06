@@ -3,6 +3,7 @@
 import argparse
 import json
 import math
+import zipfile
 from pathlib import Path
 
 from matrices import compose, identity, inverse, multiply, rotate, translate
@@ -212,12 +213,36 @@ def outputs(source, root):
     return generated
 
 
+def build_pack(root, output):
+    if output.suffix != '.mcpack':
+        raise ValueError('Display pack output must have a .mcpack extension')
+    manifest = json.loads((root / 'tools/display/pack-manifest.json').read_text())
+    # This pack must coexist with current Geyser's integrated resources.
+    if manifest['header']['uuid'] in ('e5f5c938-a701-11eb-b2a3-047d7bb283ba', '2254393d-8430-45b0-838a-bd397828c765'):
+        raise ValueError('Display pack must have its own UUID')
+    assets = ['animations/display.animation.json', 'entity/item_display.entity.json',
+              'entity/block_display.entity.json', 'models/entity/display.geo.json',
+              'render_controllers/display.render_controllers.json', 'LICENSE']
+    entries = {name: (root / name).read_bytes() for name in assets}
+    entries['manifest.json'] = (json.dumps(manifest, indent=4) + '\n').encode()
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(output, 'w') as archive:
+        for name, content in sorted(entries.items()):
+            entry = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            entry.compress_type = zipfile.ZIP_DEFLATED
+            entry.external_attr = 0o644 << 16
+            archive.writestr(entry, content)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, default=DEFAULT_SOURCE)
     parser.add_argument('--check', action='store_true')
+    parser.add_argument('--pack', type=Path, help='Build a separate display-only .mcpack for modern Geyser')
     parser.add_argument('--require-complete', action='store_true', help='Reject profiles that still list unresolved rendering paths')
     args = parser.parse_args()
+    if args.check and args.pack:
+        parser.error('--check and --pack cannot be combined')
     source = json.loads(args.source.read_text())
     if args.require_complete and source.get('unsupported'):
         parser.error('Coverage is incomplete; provide renderer profiles for the unsupported entries')
@@ -233,6 +258,8 @@ def main():
             path.write_text(content)
     if stale:
         parser.exit(1, 'Generated files differ: ' + ', '.join(stale) + '\n')
+    if args.pack:
+        build_pack(ROOT, args.pack)
 
 
 if __name__ == '__main__':

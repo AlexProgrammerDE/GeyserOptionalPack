@@ -1,0 +1,29 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Draft display corrections for Bedrock 1.26.51.1",
+        "name": "Geyser display entities (draft)",
+        "uuid": "793ee84e-66fa-4b04-87c9-7901c2d6ecc8",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            26,
+            50
+        ]
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "58025bf6-6cc3-4ace-894c-262d8e16ee77",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ]
+}

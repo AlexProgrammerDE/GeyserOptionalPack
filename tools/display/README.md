@@ -1,7 +1,7 @@
 # Display transform generator
 
 This draft targets Bedrock **1.26.51.1** and Kastle's `feature/display-entities` branch.
-Use it with the matching Geyser display implementation. Neither draft has human in-game validation yet.
+Use it with the matching Geyser display implementation and the generated display-only pack. Neither draft has human in-game validation yet.
 
 The generator replaces the debug transform with versioned correction profiles. Ordinary sprites use the measured head-slot reference transform. Block profiles cancel the measured hand transform and retain the block mesh's own origin. These are different reference frames, not a claim of complete Java display-model parity.
 
@@ -10,10 +10,12 @@ The generator replaces the debug transform with versioned correction profiles. O
 Python 3.10 or later is enough to generate the pack:
 
 ```sh
-python3 tools/display/generate.py
+python3 tools/display/generate.py --pack GeyserDisplayEntities.mcpack
 python3 tools/display/generate.py --check
 python3 -m unittest discover -s tools/display -v
 ```
+
+Place `GeyserDisplayEntities.mcpack` in Geyser's `packs/` directory. It contains only display assets and has its own UUID. It preserves the current integrated pack. The legacy root OptionalPack disables that integrated pack, so use the generated display-only artifact for this draft.
 
 The script tests require Java 17 or later and `curl`:
 
